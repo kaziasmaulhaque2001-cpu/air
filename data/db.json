@@ -31,11 +31,12 @@
     "phoneNumberId": "1223834537489336",
     "displayPhoneNumber": "+91 94758 41746",
     "verifiedName": "Dream Family Salon",
-    "status": "connected",
+    "status": "connection_error",
     "webhookStatus": "verified",
     "isSimulated": false,
     "lastWebhookAt": "2026-10-06T13:43:55.250Z",
-    "connectedAt": "2026-10-06T13:17:26.975Z"
+    "connectedAt": "2026-10-06T13:17:26.975Z",
+    "lastError": "Malformed access token EAAB_invalid_token_test"
   },
   "whatsAppSettings": {
     "id": "wa_settings_default",
@@ -53,11 +54,11 @@
       "customerName": "Instagram User (9988)",
       "status": "active",
       "mode": "ai",
-      "unreadCount": 1,
+      "unreadCount": 0,
       "lastMessageSnippet": "Aamader salon Telephone Maidan, Katwa-te 📍 Visit korte paren!",
       "lastMessageAt": "2026-10-06T14:20:59.095Z",
       "createdAt": "2026-10-06T14:20:58.596Z",
-      "updatedAt": "2026-10-06T14:20:59.095Z",
+      "updatedAt": "2026-10-06T18:59:02.372Z",
       "isDemo": false,
       "lastActivityAt": "2026-10-06T14:20:59.095Z",
       "currentTopic": "location"
@@ -132,13 +133,13 @@
       "customerName": "Kazi Production Test",
       "status": "active",
       "mode": "ai",
-      "unreadCount": 4,
-      "lastMessageSnippet": "Hi across webhook",
-      "lastMessageAt": "2026-10-06T14:03:20.000Z",
+      "unreadCount": 0,
+      "lastMessageSnippet": "hi",
+      "lastMessageAt": "2026-10-06T19:04:08.199Z",
       "createdAt": "2026-10-06T13:44:17.341Z",
-      "updatedAt": "2026-10-06T14:21:28.069Z",
+      "updatedAt": "2026-10-06T19:04:08.202Z",
       "isDemo": false,
-      "lastActivityAt": "2026-10-06T14:03:20.000Z",
+      "lastActivityAt": "2026-10-06T19:04:08.199Z",
       "currentTopic": "greeting",
       "customerPhone": "919475841999"
     },
@@ -146,17 +147,17 @@
       "id": "conv_wa_1791293634504_apuv",
       "channel": "whatsapp",
       "whatsAppCustomerId": "919800112233",
-      "username": "Kazi Asmaul Haque",
-      "customerName": "Kazi Asmaul Haque",
+      "username": "Kazi Real Customer",
+      "customerName": "Kazi Real Customer",
       "status": "active",
       "mode": "ai",
       "unreadCount": 0,
-      "lastMessageSnippet": "Conversation returned to AI Auto-Reply mode.",
-      "lastMessageAt": "2026-10-06T13:36:45.418Z",
+      "lastMessageSnippet": "Ji 😊 Bolun ki service niye jante chacchen?",
+      "lastMessageAt": "2026-10-06T19:04:57.087Z",
       "createdAt": "2026-10-06T13:33:54.504Z",
-      "updatedAt": "2026-10-06T13:36:45.418Z",
+      "updatedAt": "2026-10-06T19:04:57.091Z",
       "isDemo": false,
-      "lastActivityAt": "2026-10-06T13:36:45.418Z",
+      "lastActivityAt": "2026-10-06T19:04:57.087Z",
       "currentTopic": "greeting",
       "customerPhone": "919800112233"
     },
@@ -5705,6 +5706,63 @@
       "createdAt": "2026-10-06T14:03:20.000Z",
       "isDemo": false,
       "id": "msg_1791296488064_c6x6d"
+    },
+    {
+      "conversationId": "conv_wa_1791294257341_20f5",
+      "senderId": "user_admin",
+      "senderName": "Salon Manager",
+      "messageText": "hi",
+      "direction": "outbound",
+      "messageType": "text",
+      "status": "failed",
+      "errorMessage": "WHATSAPP_ACCESS_TOKEN is not configured",
+      "isDemo": false,
+      "id": "msg_1791313448199_2e6ip",
+      "createdAt": "2026-10-06T19:04:08.199Z",
+      "timestamp": "2026-10-06T19:04:08.199Z",
+      "channel": "whatsapp"
+    },
+    {
+      "conversationId": "conv_wa_1791293634504_apuv",
+      "channel": "whatsapp",
+      "externalMessageId": "wamid.TEST_REAL_1791313497",
+      "external_message_id": "wamid.TEST_REAL_1791313497",
+      "customerPhone": "919800112233",
+      "customer_phone": "919800112233",
+      "direction": "inbound",
+      "senderId": "919800112233",
+      "senderName": "Kazi Real Customer",
+      "senderType": "customer",
+      "messageText": "Hi",
+      "messageType": "text",
+      "status": "received",
+      "timestamp": "2026-10-06T19:04:57.000Z",
+      "createdAt": "2026-10-06T19:04:57.000Z",
+      "isDemo": false,
+      "id": "msg_1791313497073_uzj9l"
+    },
+    {
+      "conversationId": "conv_wa_1791293634504_apuv",
+      "channel": "whatsapp",
+      "externalMessageId": "wa_fail_1791313497087_z7oz",
+      "external_message_id": "wa_fail_1791313497087_gzi7",
+      "customerPhone": "919800112233",
+      "customer_phone": "919800112233",
+      "direction": "outbound",
+      "senderId": "bot",
+      "senderName": "Dream Hair & Beauty (AI)",
+      "senderType": "ai",
+      "messageText": "Ji 😊 Bolun ki service niye jante chacchen?",
+      "messageType": "text",
+      "status": "failed",
+      "errorMessage": "WHATSAPP_ACCESS_TOKEN is missing or not configured in server environment",
+      "error_code": "MISSING_TOKEN",
+      "error_type": "ConfigurationError",
+      "error_message": "WHATSAPP_ACCESS_TOKEN is missing or not configured in server environment",
+      "timestamp": "2026-10-06T19:04:57.087Z",
+      "createdAt": "2026-10-06T19:04:57.087Z",
+      "isDemo": false,
+      "id": "msg_1791313497087_41lc5"
     }
   ],
   "aiSettings": {
@@ -6945,6 +7003,14 @@
   ],
   "webhookEvents": [
     {
+      "externalEventId": "wa_1791313497064_ib6m",
+      "eventType": "whatsapp_webhook_event",
+      "payloadSummary": "{\"object\":\"whatsapp_business_account\",\"entry\":[{\"id\":\"1101935405637923\",\"changes\":[{\"field\":\"messages\",\"value\":{\"messaging_product\":\"whatsapp\",\"metada",
+      "status": "processed",
+      "id": "wh_1791313497065_ogid",
+      "processedAt": "2026-10-06T19:04:57.065Z"
+    },
+    {
       "externalEventId": "wa_1791296488061_peau",
       "eventType": "whatsapp_webhook_event",
       "payloadSummary": "{\"object\":\"whatsapp_business_account\",\"entry\":[{\"id\":\"1101935405637923\",\"changes\":[{\"value\":{\"messaging_product\":\"whatsapp\",\"metadata\":{\"display_phone",
@@ -7020,6 +7086,20 @@
     }
   ],
   "auditLogs": [
+    {
+      "id": "log_1791313472645_80tr",
+      "action": "DEMO_LOGIN",
+      "details": "Quick manager access granted to admin@instasalon.com",
+      "ip": "127.0.0.1",
+      "createdAt": "2026-10-06T19:04:32.645Z"
+    },
+    {
+      "id": "log_1791312758569_b9f2",
+      "action": "DEMO_LOGIN",
+      "details": "Quick manager access granted to admin@instasalon.com",
+      "ip": "127.0.0.1",
+      "createdAt": "2026-10-06T18:52:38.569Z"
+    },
     {
       "id": "log_1791296459098_5xkq",
       "action": "META_API_ERROR",
@@ -8035,6 +8115,16 @@
       "token": "265027a508ed706cc2e122100b04ac53bcc2295a79b0571574601b8c2629d38f",
       "userId": "user_admin",
       "expiresAt": "2026-11-05T13:36:57.183Z"
+    },
+    {
+      "token": "c941c1f13126d4cd0a137c3cc126e7128ef4619293fde34348e2efa89a3c3a62",
+      "userId": "user_admin",
+      "expiresAt": "2026-11-05T18:52:38.565Z"
+    },
+    {
+      "token": "70e892e65b9b66565db3c403f5c1a32452316a3ea5bb6ed95c23361f19bf216d",
+      "userId": "user_admin",
+      "expiresAt": "2026-11-05T19:04:32.641Z"
     }
   ]
 }

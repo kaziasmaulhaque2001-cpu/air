@@ -101,6 +101,9 @@ export interface Message {
   messageType: 'text' | 'quick_reply' | 'system';
   status: MessageStatus;
   errorMessage?: string;
+  error_code?: string;
+  error_type?: string;
+  error_message?: string;
   isDemo?: boolean;
   createdAt: string;
   timestamp?: string;

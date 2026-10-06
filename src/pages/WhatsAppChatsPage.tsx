@@ -460,7 +460,7 @@ export const WhatsAppChatsPage: React.FC<WhatsAppChatsPageProps> = ({ onOpenSimu
                 ) : (
                   messages.map(msg => {
                     const isInbound = msg.direction === 'inbound';
-                    const isBot = msg.senderType === 'ai' || msg.senderId === 'bot' || msg.status === 'ai_replied';
+                    const isBot = msg.senderType === 'ai' || msg.senderId === 'bot' || msg.status === 'ai_replied' || msg.status === 'sent';
                     const formattedDate = formatMessageDate(msg.createdAt || msg.timestamp) || 'Just now';
 
                     return (
@@ -495,9 +495,16 @@ export const WhatsAppChatsPage: React.FC<WhatsAppChatsPageProps> = ({ onOpenSimu
 
                           <div className="whitespace-pre-wrap">{msg.messageText}</div>
 
-                          {/* Guaranteed Valid Timestamp: Never "Invalid Date" */}
-                          <div className="text-[9px] opacity-65 text-right mt-1.5 font-sans">
-                            {formattedDate}
+                          {/* Guaranteed Valid Timestamp & Clear Delivery Status */}
+                          <div className="text-[9px] opacity-75 text-right mt-1.5 font-sans flex items-center justify-end gap-1.5">
+                            <span>{formattedDate}</span>
+                            {!isInbound && (
+                              msg.status === 'sent' ? (
+                                <span className="font-bold text-emerald-100" title="Delivered via Meta WhatsApp Cloud API">✓✓ Sent</span>
+                              ) : msg.status === 'failed' ? (
+                                <span className="font-bold text-rose-200" title={msg.errorMessage || msg.error_message || 'Outbound send rejected by Meta'}>⚠️ Failed</span>
+                              ) : null
+                            )}
                           </div>
                         </div>
                       </div>

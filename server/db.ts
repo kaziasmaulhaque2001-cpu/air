@@ -639,6 +639,9 @@ class Database {
           whatsAppSettings: parsed.whatsAppSettings || defaultWhatsAppSettings,
           conversations: (parsed.conversations || initialConversations).map((c: any) => {
             let snippet = c.lastMessageSnippet;
+            if (snippet?.includes('[AI Failed:')) {
+              snippet = snippet.replace(/\[AI Failed:[^\]]*\]\s*/g, '').trim();
+            }
             if (snippet?.includes('₹150') || snippet?.includes('₹800') || snippet?.includes('₹2399')) {
               snippet = 'Gents Hair Cut ₹99, Ladies Hair Cut ₹249 😊';
             }

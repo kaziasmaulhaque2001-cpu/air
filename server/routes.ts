@@ -487,7 +487,7 @@ apiRouter.get('/whatsapp/status', async (req: Request, res: Response) => {
     process.env.WEBHOOK_VERIFY_TOKEN ||
     'dream_salon_verify_token_2025';
 
-  const hasToken = Boolean(process.env.WHATSAPP_ACCESS_TOKEN || process.env.INSTAGRAM_ACCESS_TOKEN);
+  const hasToken = Boolean(process.env.WHATSAPP_ACCESS_TOKEN);
   const hasPhoneId = Boolean(account.phoneNumberId || process.env.WHATSAPP_PHONE_NUMBER_ID);
   const hasWabaId = Boolean(account.businessAccountId || process.env.WHATSAPP_BUSINESS_ACCOUNT_ID);
 
@@ -854,15 +854,18 @@ apiRouter.post('/conversations/:id/trigger-ai', async (req: Request, res: Respon
       senderType: 'ai',
       messageText: aiResult.replyText,
       messageType: 'text',
-      status: res.success ? 'ai_replied' : 'failed',
-      errorMessage: res.error,
+      status: res.success ? 'sent' : 'failed',
+      errorMessage: res.errorMessage || res.error,
+      error_code: res.errorCode,
+      error_type: res.errorType,
+      error_message: res.errorMessage || res.error,
       timestamp: outboundTime,
       createdAt: outboundTime,
       isDemo: conv.isDemo
     });
 
     await db.updateConversation(conv.id, {
-      lastMessageSnippet: res.success ? aiResult.replyText : `[AI Failed: ${res.error}] ${aiResult.replyText}`,
+      lastMessageSnippet: aiResult.replyText,
       lastMessageAt: outboundTime
     });
   } else {
