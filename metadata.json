@@ -1,0 +1,8 @@
+{
+  "name": "Instagram AI Auto Reply",
+  "description": "Production-ready Instagram AI DM Auto-Reply Web App with Meta webhook integration, Gemini AI responses, human takeover, and business knowledge management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
