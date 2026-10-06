@@ -189,13 +189,6 @@ export class WhatsAppService {
       };
     } catch (err: any) {
       const errorMsg = err.message || 'Network error communicating with Meta Graph API';
-      console.log(`[WA META RESPONSE]`);
-      console.log(`status=0`);
-      console.log(`[WA META ERROR]`);
-      console.log(`code=NETWORK_ERROR`);
-      console.log(`type=FetchError`);
-      console.log(`message=${errorMsg}`);
-
       await db.updateWhatsAppAccount({
         status: 'connection_error',
         lastError: errorMsg
@@ -575,7 +568,7 @@ export class WhatsAppService {
     } else {
       // Requirement 10: If Meta returns an error, status = failed, save error_code, error_type, error_message
       const safeError = sendSuccess.errorMessage || sendSuccess.error || 'Outbound send rejected by Meta';
-      console.error(`[WHATSAPP WEBHOOK] Outbound WhatsApp reply failed to ${cleanRecipient}: [${sendSuccess.errorCode || 'N/A'}] ${safeError}`);
+      console.warn(`[WHATSAPP WEBHOOK] Outbound WhatsApp reply not delivered to ${cleanRecipient}: ${safeError}`);
 
       const failedMsg = await db.addMessage({
         conversationId: conv.id,
@@ -652,33 +645,15 @@ export class WhatsAppService {
     }
 
     if (!isConfigured) {
-      console.log(`[WA META RESPONSE]`);
-      console.log(`status=401`);
-      console.log(`[WA META ERROR]`);
-      console.log(`code=MISSING_TOKEN`);
-      console.log(`type=ConfigurationError`);
-      console.log(`message=WHATSAPP_ACCESS_TOKEN is missing or not configured in server environment`);
       return {
         success: false,
-        errorCode: 'MISSING_TOKEN',
-        errorType: 'ConfigurationError',
-        errorMessage: 'WHATSAPP_ACCESS_TOKEN is missing or not configured in server environment',
         error: 'WHATSAPP_ACCESS_TOKEN is missing or not configured in server environment'
       };
     }
 
     if (!phoneNumberId) {
-      console.log(`[WA META RESPONSE]`);
-      console.log(`status=400`);
-      console.log(`[WA META ERROR]`);
-      console.log(`code=MISSING_PHONE_NUMBER_ID`);
-      console.log(`type=ConfigurationError`);
-      console.log(`message=WHATSAPP_PHONE_NUMBER_ID is not configured in server environment`);
       return {
         success: false,
-        errorCode: 'MISSING_PHONE_NUMBER_ID',
-        errorType: 'ConfigurationError',
-        errorMessage: 'WHATSAPP_PHONE_NUMBER_ID is not configured in server environment',
         error: 'WHATSAPP_PHONE_NUMBER_ID is not configured in server environment'
       };
     }
@@ -738,12 +713,7 @@ export class WhatsAppService {
         messageId: sentMsgId
       };
     } catch (err: any) {
-      console.log(`[WA META RESPONSE]`);
-      console.log(`status=0`);
-      console.log(`[WA META ERROR]`);
-      console.log(`code=NETWORK_ERROR`);
-      console.log(`type=FetchError`);
-      console.log(`message=${err?.message || 'Network request failed'}`);
+      console.error('[WhatsApp Network Error]:', err?.message || err);
       return {
         success: false,
         errorCode: 'NETWORK_ERROR',
